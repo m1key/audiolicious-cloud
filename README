@@ -1,1 +1,9 @@
 Audiolicious Stats Mining to be deployed on the cloud.
+
+Please set your TOMCAT_HOME system variable.
+
+How to build:
+gradle clean build
+
+How to deploy:
+gradle deployment
