@@ -7,15 +7,26 @@
   http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">
 
 	<!-- Enabling Spring beans auto-discovery -->
-	<context:component-scan base-package="controller" />
+	<context:component-scan base-package="me.m1key.audiolicious.cloud" />
 
 	<!-- Enabling Spring MVC configuration through annotations -->
 	<mvc:annotation-driven />
 
+	<bean id="velocityConfig"
+		class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+		<property name="resourceLoaderPath">
+			<value>/</value>
+		</property>
+	</bean>
+
 	<!-- Defining which view resolver to use -->
-	<bean
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/views/" />
-		<property name="suffix" value=".jsp" />
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
+		<property name="prefix">
+			<value>/WEB-INF/velocity/</value>
+		</property>
+		<property name="suffix">
+			<value>.vm</value>
+		</property>
 	</bean>
 </beans>
