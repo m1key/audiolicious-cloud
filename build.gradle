@@ -6,23 +6,20 @@ group = 'me.m1key.audiolicious'
 version = '0.0.1-SNAPSHOT'
 archivesBaseName = 'audiolicious-cloud'
 
-sourceCompatibility = 1.7
+sourceCompatibility = 1.6
+targetCompatibility = 1.6
 
 repositories {
 	mavenLocal()
 	mavenCentral()
+	mavenRepo name: "spring-test-mvc", url: 'http://repo.springsource.org/libs-milestone/'
+	mavenRepo url:'http://maven.springframework.org/milestone/'
 }
 
 project.ext.finalName = 'audiolicious-cloud.war'
 
-task renameWar(type: Copy) {
-	from war.archivePath
-	into('build/libs')
-	rename(/(.+)/, finalName)
-}
-task deployment(dependsOn: 'renameWar', type: Copy) {
-	from('build/libs/' + finalName)
-	into("$System.env.TOMCAT_HOME/webapps/")
+war {
+	archiveName = 'audiolicious-cloud.war'
 }
 
 sourceSets.test.runtimeClasspath += files("src/main/webapp")
@@ -41,6 +38,6 @@ dependencies {
 
 	testCompile group: 'junit', name: 'junit', version: '4.+'
 	testCompile 'org.hamcrest:hamcrest-all:1.3'
-	testCompile 'javax.servlet:javax.servlet-api:3.0.1'
-
+	testCompile 'javax.servlet:servlet-api:2.5'
+	testCompile 'org.springframework:spring-test-mvc:1.0.0.M2'
 }
