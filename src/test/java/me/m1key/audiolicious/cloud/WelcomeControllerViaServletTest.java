@@ -14,7 +14,7 @@ import org.springframework.test.web.server.MockMvc;
 import org.springframework.test.web.server.setup.MockMvcBuilders;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:/WEB-INF/audiolicious-servlet.xml" })
+@ContextConfiguration(locations = { "classpath:/audiolicious-servlet.xml" })
 public class WelcomeControllerViaServletTest {
 
 	private MockMvc mockMvc;
@@ -22,7 +22,7 @@ public class WelcomeControllerViaServletTest {
 	@Before
 	public void setup() {
 		this.mockMvc = MockMvcBuilders.xmlConfigSetup(
-				"classpath:/WEB-INF/audiolicious-servlet.xml").build();
+				"classpath:/audiolicious-servlet.xml").build();
 	}
 
 	@Test

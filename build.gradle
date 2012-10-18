@@ -1,10 +1,10 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'war'
+apply plugin: 'eclipse-wtp'
 
 group = 'me.m1key.audiolicious'
 version = '0.0.1-SNAPSHOT'
-archivesBaseName = 'audiolicious-cloud'
 
 sourceCompatibility = 1.6
 targetCompatibility = 1.6
@@ -18,11 +18,12 @@ repositories {
 
 project.ext.finalName = 'audiolicious-cloud.war'
 
-war {
-	archiveName = 'audiolicious-cloud.war'
+war { archiveName = finalName }
+task deployment(type: Copy) {
+	from('build/libs/' + finalName)
+	into("$System.env.TOMCAT_HOME/webapps/")
 }
 
-sourceSets.test.runtimeClasspath += files("src/main/webapp")
 
 project.ext.springVersion = '3.1.2.RELEASE'
 
