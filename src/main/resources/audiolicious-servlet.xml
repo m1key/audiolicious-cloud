@@ -31,8 +31,8 @@
 		</property>
 	</bean>
 
-	<mongo:mongo host="localhost" port="27017" />
-	<mongo:db-factory dbname="adlcs_cloud" />
+	<mongo:db-factory id="mongoDbFactory" dbname="adlcs_cloud"
+		host="127.0.0.1" port="27017" />
 
 	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
 		<constructor-arg name="mongoDbFactory" ref="mongoDbFactory" />
