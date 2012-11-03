@@ -36,7 +36,8 @@ public class SongRepositoryTest {
 	public void testSaveAndRetrieve() {
 		assertThat(songRepository.count(), equalTo(0L));
 
-		Song song = new Song("Come Together");
+		Song song = new Song("Come Together", "Greatest Hits", "Tina Turner",
+				"abc");
 		songRepository.save(song);
 
 		assertThat(songRepository.count(), equalTo(1L));
