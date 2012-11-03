@@ -28,10 +28,10 @@ task deployment(type: Copy) {
 project.ext.springVersion = '3.1.2.RELEASE'
 
 dependencies {
-	compile group: 'org.springframework', name: 'spring-beans', version: springVersion
-	compile group: 'org.springframework', name: 'spring-context', version: springVersion
-	compile group: 'org.springframework', name: 'spring-core', version: springVersion
-	compile group: 'org.springframework', name: 'spring-webmvc', version: springVersion
+	compile group: 'org.springframework', name: 'spring-beans', version: springVersion, force: true
+	compile group: 'org.springframework', name: 'spring-context', version: springVersion, force: true
+	compile group: 'org.springframework', name: 'spring-core', version: springVersion, force: true
+	compile group: 'org.springframework', name: 'spring-webmvc', version: springVersion, force: true
 
 	compile group: 'org.springframework.data', name: 'spring-data-mongodb', version: '1.0.4.RELEASE'
 	compile group: 'org.mongodb', name: 'mongo-java-driver', version: '2.9.1'
@@ -39,7 +39,7 @@ dependencies {
 	compile group: 'org.slf4j', name: 'slf4j-api', version: '1.6.6'
 	compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.6.6'
 	compile group: 'org.apache.velocity', name: 'velocity', version: '1.7'
-	
+
 	compile group: 'org.cloudfoundry', name: 'cloudfoundry-runtime', version: '0.8.2'
 
 	testCompile group: 'org.springframework', name: 'spring-test', version: springVersion
@@ -52,9 +52,6 @@ dependencies {
 configurations.all {
 	resolutionStrategy {
 		force group: 'org.springframework', name: 'spring-aop', version: springVersion
-		force group: 'org.springframework', name: 'spring-beans', version: springVersion
-		force group: 'org.springframework', name: 'spring-context', version: springVersion
-		force group: 'org.springframework', name: 'spring-core', version: springVersion
 		force group: 'org.springframework', name: 'spring-expression', version: springVersion
 		force group: 'org.springframework', name: 'spring-tx', version: springVersion
 	}
